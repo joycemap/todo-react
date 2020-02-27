@@ -58,10 +58,20 @@ class App extends React.Component {
     }
   }
 
+  
+  //  handleClick(event) {
+  //     event.preventDefault();
+  //     console.log('The link was clicked.');
+  //     let item = this.state.items;
+  //     let term = this.state.term;
+  //     item.pop(term);
+  //   }
+  
+
   render() {
     console.log("rendering");
     return (
-      <div>
+      <div className="container">
         <input
           onChange={event => {
             this.changeHandler(event);
@@ -78,7 +88,11 @@ class App extends React.Component {
           Submit
         </button>
         <List items={this.state.items} />
-       <p></p> 
+
+      {/* <a href="#" onClick={handleClick}>
+        Delete
+      </a> */}
+      
       </div>
     );
   }
