@@ -3,8 +3,7 @@ import { hot } from "react-hot-loader";
 import List from "./List";
 
 var popups = require("popups");
-var moment = require('moment'); 
-
+var moment = require("moment");
 
 class App extends React.Component {
   constructor() {
@@ -53,12 +52,11 @@ class App extends React.Component {
       // });
       popups.alert({
         content:
-          "Terms must be more than 1 character and less than 200 characters."
+          "Entries must be more than 1 character and less than 200 characters."
       });
     }
   }
 
-  
   //  handleClick(event) {
   //     event.preventDefault();
   //     console.log('The link was clicked.');
@@ -66,7 +64,6 @@ class App extends React.Component {
   //     let term = this.state.term;
   //     item.pop(term);
   //   }
-  
 
   render() {
     console.log("rendering");
@@ -89,10 +86,9 @@ class App extends React.Component {
         </button>
         <List items={this.state.items} />
 
-      {/* <a href="#" onClick={handleClick}>
+        {/* <a href="#" onClick={handleClick}>
         Delete
       </a> */}
-      
       </div>
     );
   }
