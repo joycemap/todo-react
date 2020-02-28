@@ -3,7 +3,7 @@ import { hot } from "react-hot-loader";
 import List from "./List";
 
 var popups = require("popups");
-var moment = require("moment");
+// var moment = require("moment");
 
 class App extends React.Component {
   constructor() {
@@ -34,22 +34,10 @@ class App extends React.Component {
       // console.log(item)
       this.setState({
         term: "",
-        //[... spreads out the items, like a for loop]
         items: [...item]
       });
-      moment().format();
+      // moment().format();
     } else {
-      //   popups.confirm({
-      //     content:     '<b>Terms must be more than 1 character and less than 200 characters.</b>',
-      //     labelOk:     'OK',
-      //     labelCancel: 'No',
-      //     onSubmit: function() {
-      //         console.log(':)');
-      //     },
-      //     onClose: function() {
-      //         console.log(':(');
-      //     }
-      // });
       popups.alert({
         content:
           "Entries must be more than 1 character and less than 200 characters."
@@ -57,13 +45,11 @@ class App extends React.Component {
     }
   }
 
-  //  handleClick(event) {
-  //     event.preventDefault();
-  //     console.log('The link was clicked.');
-  //     let item = this.state.items;
-  //     let term = this.state.term;
-  //     item.pop(term);
-  //   }
+   handleClick(event) {
+      event.preventDefault();
+      console.log('The delete was clicked.');
+      item.slice(term);
+    }
 
   render() {
     console.log("rendering");
@@ -81,14 +67,16 @@ class App extends React.Component {
           onClick={event => {
             this.onSubmit(event);
           }}
-        >
-          Submit
+        >Submit
         </button>
         <List items={this.state.items} />
 
-        {/* <a href="#" onClick={handleClick}>
-        Delete
-      </a> */}
+        <button
+          onClick={event => {
+            this.handleClick(event);
+          }}
+        >Delete
+        </button>
       </div>
     );
   }
