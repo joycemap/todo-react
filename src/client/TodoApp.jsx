@@ -49,7 +49,6 @@ class TodoApp extends React.Component {
     deletedItems.push(item);
     let selectedItem = this.state.items.filter(element => element !== item);
     this.setState({ items: selectedItem, deletedItems: deletedItems });
-
     console.log(selectedItem);
     console.log(deletedItems);
   }
@@ -66,22 +65,19 @@ class TodoApp extends React.Component {
           minLength="2"
           maxLength="200"
         />
-        <div
-          className="btn-toolbar"
-          role="toolbar"
-          aria-label="Toolbar with button groups"
-        >
-          <div className="btn-group mr-2" role="group" aria-label="First group">
-            <Button
-              theme="success"
-              onClick={event => {
-                this.onSubmit(event);
+      
+        <Button 
+          pill theme="success" size="lg"
+          onClick={event => {
+              this.onSubmit(event);
               }}
-            >
-              Submit
-            </Button>
-          </div>
-        </div>
+          >Submit
+          </Button>
+        
+            <br> 
+            
+            </br>
+            
         <ItemList items={this.state.items} removeItem={this.removeItem} />
       </div>
     );

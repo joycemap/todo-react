@@ -1,6 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-import TodoItem from "./TodoItem";
+// import TodoItem from "./TodoItem";
 import { Button } from "shards-react";
 var moment = require("moment");
 var popups = require("popups");
@@ -12,18 +12,13 @@ class ItemList extends React.Component {
 
   render() {
     let ItemList = this.props.items.map((item, index) => {
-      let datetime = moment().format();
+      let datetime = moment().format('YYYY-MM-DD');
       return (
-        // <TodoItem
-        //   item={item}
-        //   index={index}
-        //   key={index}
-        //   removeTodo={this.removeItem}
-        // />
 
         <li key={index}>
           {datetime}-{item}
-          <Button
+          &nbsp;
+          <Button pill theme="secondary" size="sm"
             onClick={event => {
               this.removeItem(event, index, item);
             }}
