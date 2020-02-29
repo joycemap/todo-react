@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { hot } from "react-hot-loader";
 
-import App from "./App";
+import TodoApp from "./TodoApp";
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<TodoApp />, document.getElementById("TodoApp"));

@@ -1,23 +1,23 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-import List from "./List";
+import { Button } from "shards-react";
+import ItemList from "./List";
+import Form from "./components/Form";
 
 var popups = require("popups");
-// var moment = require("moment");
 
-class App extends React.Component {
+class TodoApp extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      //input store what we passing as a value to our input
       term: "",
-      //items: empty array to store every value we are passing to our todo list
-      items: []
+      items: [],
+      deletedItems: []
     };
+    this.removeItem = this.removeItem.bind(this);
   }
 
-  //onChange changes state depending on the current input value. Use this.setState() method to see UI update.
   changeHandler(event) {
     console.log("change");
     event.preventDefault();
@@ -31,12 +31,11 @@ class App extends React.Component {
       let item = this.state.items;
       let term = this.state.term;
       item.push(term);
-      // console.log(item)
+
       this.setState({
         term: "",
         items: [...item]
       });
-      // moment().format();
     } else {
       popups.alert({
         content:
@@ -45,11 +44,15 @@ class App extends React.Component {
     }
   }
 
-   handleClick(event) {
-      event.preventDefault();
-      console.log('The delete was clicked.');
-      item.slice(term);
-    }
+  removeItem(index, item) {
+    let deletedItems = this.state.deletedItems;
+    deletedItems.push(item);
+    let selectedItem = this.state.items.filter(element => element !== item);
+    this.setState({ items: selectedItem, deletedItems: deletedItems });
+
+    console.log(selectedItem);
+    console.log(deletedItems);
+  }
 
   render() {
     console.log("rendering");
@@ -63,23 +66,26 @@ class App extends React.Component {
           minLength="2"
           maxLength="200"
         />
-        <button
-          onClick={event => {
-            this.onSubmit(event);
-          }}
-        >Submit
-        </button>
-        <List items={this.state.items} />
-
-        <button
-          onClick={event => {
-            this.handleClick(event);
-          }}
-        >Delete
-        </button>
+        <div
+          className="btn-toolbar"
+          role="toolbar"
+          aria-label="Toolbar with button groups"
+        >
+          <div className="btn-group mr-2" role="group" aria-label="First group">
+            <Button
+              theme="success"
+              onClick={event => {
+                this.onSubmit(event);
+              }}
+            >
+              Submit
+            </Button>
+          </div>
+        </div>
+        <ItemList items={this.state.items} removeItem={this.removeItem} />
       </div>
     );
   }
 }
 
-export default hot(module)(App);
+export default hot(module)(TodoApp);
