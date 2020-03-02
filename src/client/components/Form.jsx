@@ -1,10 +1,8 @@
-import React from 'react';
-
+// IMPORTANT: This file is not in use!!!!
+import React from "react";
 
 class Form extends React.Component {
-
   render() {
-
     return (
       <div>
         <input
@@ -15,7 +13,7 @@ class Form extends React.Component {
           minLength="2"
           maxLength="200"
         />
-        
+
         <input className={textbox} />
       </div>
     );
